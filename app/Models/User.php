@@ -6,6 +6,7 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -14,14 +15,17 @@ class User extends Authenticatable
      */
     use HasFactory;
     use Notifiable;
+    use HasApiTokens;
 
     /**
      * @var list<string>
      */
     protected $fillable = [
+        'uuid',
         'name',
         'email',
         'password',
+        'active',
     ];
 
     /**
@@ -38,6 +42,7 @@ class User extends Authenticatable
     {
         return [
             'password' => 'hashed',
+            'active' => 'boolean',
         ];
     }
 }

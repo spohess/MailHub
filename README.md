@@ -1,3 +1,3 @@
 # MailHub
 
-### Microservice for Mail control
+### Microservice for Mail control (Backend only)
