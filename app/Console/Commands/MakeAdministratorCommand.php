@@ -1,0 +1,39 @@
+<?php
+
+namespace App\Console\Commands;
+
+use App\Actions\Users\UserCreateAction;
+use App\Notifications\NewUserPasswordNotification;
+use Illuminate\Console\Command;
+use Illuminate\Support\Str;
+
+class MakeAdministratorCommand extends Command
+{
+    /**
+     * @var string
+     */
+    protected $signature = 'appmake:administrator {email}';
+
+    /**
+     * @var string
+     */
+    protected $description = 'Command description';
+
+    /**
+     * @return void
+     */
+    public function handle()
+    {
+        $password = fake()->password() . fake()->password();
+        $data = [
+            'name' => 'Administrator',
+            'email' => $this->argument('email'),
+            'password' => bcrypt($password),
+            'administrator' => true,
+        ];
+        $user = app()->make(UserCreateAction::class)->execute($data);
+        $user->notify(new NewUserPasswordNotification(['password' => $password]));
+
+        $this->alert('Usuário criado com sucesso e a senha foi enviada para o email informado');
+    }
+}

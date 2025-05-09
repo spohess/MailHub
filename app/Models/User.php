@@ -7,7 +7,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Carbon\Carbon;
 
+/**
+ * @property int $id
+ * @property string $uuid
+ * @property string $email
+ * @property string $password
+ * @property bool $administrator
+ * @property bool $active
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ */
 class User extends Authenticatable
 {
     /**
@@ -25,6 +36,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'administrator',
         'active',
     ];
 
@@ -42,6 +54,7 @@ class User extends Authenticatable
     {
         return [
             'password' => 'hashed',
+            'administrator' => 'boolean',
             'active' => 'boolean',
         ];
     }
