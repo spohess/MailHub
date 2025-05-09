@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use App\Actions\Users\UserCreateAction;
 use App\Notifications\NewUserPasswordNotification;
 use Illuminate\Console\Command;
-use Illuminate\Support\Str;
 
 class MakeAdministratorCommand extends Command
 {
@@ -17,7 +16,7 @@ class MakeAdministratorCommand extends Command
     /**
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Command for create admin user';
 
     /**
      * @return void
@@ -34,6 +33,6 @@ class MakeAdministratorCommand extends Command
         $user = app()->make(UserCreateAction::class)->execute($data);
         $user->notify(new NewUserPasswordNotification(['password' => $password]));
 
-        $this->alert('Usuário criado com sucesso e a senha foi enviada para o email informado');
+        $this->alert('User created successfully and the password was sent to the email provided');
     }
 }
