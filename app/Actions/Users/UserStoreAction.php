@@ -3,17 +3,18 @@
 namespace App\Actions\Users;
 
 use App\Models\User;
-use App\Support\Actions\CreateActionInterface;
+use App\Support\Actions\StoreActionInterface;
 use Illuminate\Support\Str;
 
-class UserCreateAction implements CreateActionInterface
+class UserStoreAction implements StoreActionInterface
 {
     /**
      * @param User $user
      */
     public function __construct(
         private User $user
-    ) {}
+    ) {
+    }
 
     /**
      * @param array $data

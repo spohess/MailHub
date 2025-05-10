@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Actions\Users\UserCreateAction;
+use App\Actions\Users\UserStoreAction;
 use App\Notifications\NewUserPasswordNotification;
 use Illuminate\Console\Command;
 
@@ -30,7 +30,7 @@ class MakeAdministratorCommand extends Command
             'password' => bcrypt($password),
             'administrator' => true,
         ];
-        $user = app()->make(UserCreateAction::class)->execute($data);
+        $user = app()->make(UserStoreAction::class)->execute($data);
         $user->notify(new NewUserPasswordNotification(['password' => $password]));
 
         $this->alert('User created successfully and the password was sent to the email provided');

@@ -2,7 +2,7 @@
 
 namespace App\Support\Actions;
 
-interface CreateActionInterface
+interface StoreActionInterface
 {
     public function execute(array $data);
 }
