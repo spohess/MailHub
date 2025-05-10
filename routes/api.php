@@ -11,7 +11,15 @@ Route::get('/', function (): JsonResponse {
 
 Route::prefix('auth')->group(__DIR__ . '/api/auth.php');
 
-Route::middleware(['auth:sanctum'])->group(function () {
-    Route::middleware(AdministradorMiddleware::class)
-        ->apiResource('user', UserController::class);
+Route::middleware([
+    'auth:sanctum',
+    AdministradorMiddleware::class,
+])->group(function () {
+    Route::apiResource('user', UserController::class);
+});
+
+Route::middleware([
+    'auth:sanctum',
+])->group(function () {
+    Route::apiResource('user', UserController::class);
 });

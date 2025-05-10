@@ -18,6 +18,7 @@ class UserStoreAction implements StoreActionInterface
         $this->user->fill([
             'uuid' => Str::uuid(),
             'active' => true,
+            'administrator' => true,
             ...$data,
         ]);
         $this->user->save();
