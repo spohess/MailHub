@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\UserController;
+use App\Http\Middleware\AdministradorMiddleware;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Route;
 
@@ -8,3 +10,8 @@ Route::get('/', function (): JsonResponse {
 });
 
 Route::prefix('auth')->group(__DIR__ . '/api/auth.php');
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::middleware(AdministradorMiddleware::class)
+        ->apiResource('user', UserController::class);
+});
