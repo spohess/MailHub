@@ -8,19 +8,10 @@ use Illuminate\Console\Command;
 
 class MakeAdministratorCommand extends Command
 {
-    /**
-     * @var string
-     */
     protected $signature = 'appmake:administrator {email}';
 
-    /**
-     * @var string
-     */
     protected $description = 'Command for create admin user';
 
-    /**
-     * @return void
-     */
     public function handle()
     {
         $password = fake()->password() . fake()->password();

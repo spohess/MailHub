@@ -8,19 +8,11 @@ use Illuminate\Support\Str;
 
 class UserStoreAction implements StoreActionInterface
 {
-    /**
-     * @param User $user
-     */
     public function __construct(
         private User $user
     ) {
     }
 
-    /**
-     * @param array $data
-     *
-     * @return User
-     */
     public function execute(array $data): User
     {
         $this->user->fill([
