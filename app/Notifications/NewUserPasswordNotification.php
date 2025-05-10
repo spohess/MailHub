@@ -17,19 +17,11 @@ class NewUserPasswordNotification extends Notification
     ) {
     }
 
-    /**
-     * @return array<int, string>
-     */
     public function via(object $notifiable): array
     {
         return ['mail'];
     }
 
-    /**
-     * @param object $notifiable
-     *
-     * @return MailMessage
-     */
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)

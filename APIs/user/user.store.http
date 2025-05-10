@@ -1,0 +1,10 @@
+POST http://localhost/api/user HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|trOEdJnkEhMnkVnCjf7eUQUKWQvpZi68hceOtQONf9aeae69
+
+{
+    "name": "Sergio Hess",
+    "email": "sergio.hess@local",
+    "password": "P@ssw0rd"
+}

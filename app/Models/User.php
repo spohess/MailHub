@@ -28,9 +28,6 @@ class User extends Authenticatable
     use Notifiable;
     use HasApiTokens;
 
-    /**
-     * @var list<string>
-     */
     protected $fillable = [
         'uuid',
         'name',
@@ -40,16 +37,10 @@ class User extends Authenticatable
         'active',
     ];
 
-    /**
-     * @var list<string>
-     */
     protected $hidden = [
         'password',
     ];
 
-    /**
-     * @return array<string, string>
-     */
     protected function casts(): array
     {
         return [
