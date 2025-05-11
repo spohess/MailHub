@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Actions\Users\UserStoreAction;
 use App\Notifications\NewUserPasswordNotification;
 use Illuminate\Console\Command;
+use Illuminate\Support\Str;
 
 class MakeAdministratorCommand extends Command
 {
@@ -14,7 +15,7 @@ class MakeAdministratorCommand extends Command
 
     public function handle()
     {
-        $password = fake()->password() . fake()->password();
+        $password = Str::random(12);
         $data = [
             'name' => 'Administrator',
             'email' => $this->argument('email'),

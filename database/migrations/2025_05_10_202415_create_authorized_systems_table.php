@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->text('description')->nullable();
             $table->string('token');
             $table->string('ip_address')->nullable();
-            $table->boolean('active')->default('true');
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }
